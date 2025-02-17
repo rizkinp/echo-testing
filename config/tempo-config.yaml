@@ -1,0 +1,17 @@
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4323  # ✅ Pastikan gRPC mendengarkan di 4323
+        http:
+          endpoint: 0.0.0.0:4321  # ✅ HTTP tetap di 4321
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /var/tempo/traces
